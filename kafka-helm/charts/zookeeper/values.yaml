@@ -435,7 +435,7 @@ persistence:
   existingClaim: ""
   ## @param persistence.enabled Enable Zookeeper data persistence using PVC
   ##
-  enabled: true
+  enabled: false
   ## @param persistence.storageClass PVC Storage Class for ZooKeeper data volume
   ##
   storageClass: ""
