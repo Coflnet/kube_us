@@ -264,7 +264,6 @@ controller:
   ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
   nodeSelector:
-    kubernetes.io/os: linux
     ingress: "true"
 
   ## Liveness and readiness probe values
