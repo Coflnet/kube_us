@@ -1,0 +1,53 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: registry-ingress
+  namespace: registry
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-body-size: 8000m
+spec:
+  rules:
+  - host: registry.flou21.de
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service: 
+            name: registry-service
+            port:
+              number: 5000
+  - host: registry-ui.flou21.de
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service: 
+            name: registry-ui-service
+            port:
+              number: 80
+
+
+  - host: registry.flou.dev
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service: 
+            name: dev-registry-service
+            port:
+              number: 5000
+  - host: registry-ui.flou.dev
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service: 
+            name: dev-registry-ui-service
+            port:
+              number: 80
+

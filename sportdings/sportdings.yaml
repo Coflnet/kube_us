@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sportdings
+  namespace: sportdings
+  labels:
+    app: sportdings
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sportdings
+  template:
+    metadata:
+      labels:
+        app: sportdings
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+      - name: sportdings-backend
+        image: registry.flou21.de/sport-dings:4350f104-d489-4031-8631-a495bc5b2c07
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sportdings-service
+  namespace: sportdings
+spec:
+  selector:
+    app: sportdings
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80

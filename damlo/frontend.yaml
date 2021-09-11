@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: damlo
+  labels:
+    app: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+      - name: frontend
+        image: registry.flou21.de/damlo:6a27ace8-cf91-46ec-9646-b695eee6c954
+        ports:
+          - containerPort: 80
+        resources:
+          requests:
+            memory: "20Mi"
+            cpu: "10m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: damlo
+spec:
+  selector:
+    app: frontend
+  ports:
+    - port: 80
+      targetPort: 80
