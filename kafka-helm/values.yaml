@@ -1239,7 +1239,6 @@ provisioning:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
-      linger.ms: 0
   - name: sky-soldauction-raw
     partitions: 12
     replicationFactor: 1
@@ -1247,7 +1246,6 @@ provisioning:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
-      linger.ms: 0
   - name: sky-newauction-raw
     partitions: 12
     replicationFactor: 1
@@ -1255,7 +1253,6 @@ provisioning:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
-      linger.ms: 0
   - name: sky-endedauction-raw
     partitions: 1
     replicationFactor: 1
@@ -1263,7 +1260,6 @@ provisioning:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
-      linger.ms: 0
   - name: sky-newbid-raw
     partitions: 1
     replicationFactor: 1
@@ -1271,7 +1267,6 @@ provisioning:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
-      linger.ms: 0
   - name: sky-bazaar-raw
     partitions: 1
     replicationFactor: 1
@@ -1279,7 +1274,6 @@ provisioning:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
-      linger.ms: 0
   - name: sky-canceledauction
     partitions: 1
     replicationFactor: 3
@@ -1287,7 +1281,6 @@ provisioning:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
-      linger.ms: 0
   - name: sky-soldauction
     partitions: 1
     replicationFactor: 3
@@ -1295,7 +1288,6 @@ provisioning:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
-      linger.ms: 0
   - name: sky-newauction
     partitions: 1
     replicationFactor: 3
@@ -1303,7 +1295,6 @@ provisioning:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
-      linger.ms: 0
   - name: sky-endedauction
     partitions: 1
     replicationFactor: 3
@@ -1311,7 +1302,6 @@ provisioning:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
-      linger.ms: 0
   - name: sky-newbid
     partitions: 1
     replicationFactor: 3
@@ -1319,7 +1309,6 @@ provisioning:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
-      linger.ms: 0
   - name: sky-bazaar
     partitions: 1
     replicationFactor: 3
@@ -1327,7 +1316,6 @@ provisioning:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
-      linger.ms: 0
   - name: sky-topic-flip
     partitions: 1
     replicationFactor: 3
@@ -1335,7 +1323,6 @@ provisioning:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
-      linger.ms: 0
 
 ## @section Zookeeper chart parameters
 
