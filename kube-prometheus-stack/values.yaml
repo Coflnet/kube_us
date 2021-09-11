@@ -621,7 +621,7 @@ alertmanager:
 ##
 grafana:
   enabled: true
-  namespaceOverride: "prometheus"
+  namespaceOverride: ""
 
   ## ForceDeployDatasources Create datasource configmap even if grafana deployment has been disabled
   ##
