@@ -1254,71 +1254,71 @@ provisioning:
       flush.messages: 1
       compression.type: "gzip"
   - name: sky-endedauction-raw
-    partitions: 1
+    partitions: 12
     replicationFactor: 1
     config:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
   - name: sky-newbid-raw
-    partitions: 1
+    partitions: 12
     replicationFactor: 1
     config:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
   - name: sky-bazaar-raw
-    partitions: 1
+    partitions: 12
     replicationFactor: 1
     config:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
   - name: sky-canceledauction
-    partitions: 1
-    replicationFactor: 3
+    partitions: 12
+    replicationFactor: 1
     config:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
   - name: sky-soldauction
-    partitions: 1
-    replicationFactor: 3
+    partitions: 12
+    replicationFactor: 1
     config:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
   - name: sky-newauction
-    partitions: 1
-    replicationFactor: 3
+    partitions: 12
+    replicationFactor: 1
     config:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
   - name: sky-endedauction
-    partitions: 1
-    replicationFactor: 3
+    partitions: 12
+    replicationFactor: 1
     config:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
   - name: sky-newbid
-    partitions: 1
-    replicationFactor: 3
+    partitions: 12
+    replicationFactor: 1
     config:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
   - name: sky-bazaar
-    partitions: 1
-    replicationFactor: 3
+    partitions: 12
+    replicationFactor: 1
     config:
       max.message.bytes: 64000
       flush.messages: 1
       compression.type: "gzip"
   - name: sky-topic-flip
-    partitions: 1
-    replicationFactor: 3
+    partitions: 12
+    replicationFactor: 1
     config:
       max.message.bytes: 64000
       flush.messages: 1
