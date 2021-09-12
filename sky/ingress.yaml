@@ -106,4 +106,4 @@ spec:
           service:
             name: sky-commands-main-service
             port:
-              number: 80
+              number: 8008
