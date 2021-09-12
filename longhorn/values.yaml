@@ -220,5 +220,4 @@ enablePSP: true
 namespaceOverride: ""
 
 # Annotations to add to the Longhorn Manager DaemonSet Pods. Optional.
-annotations: 
-  linkerd.io/inject: enabled  
+annotations: {}
