@@ -18,7 +18,7 @@ spec:
       imagePullSecrets:
         - name: regcred
       containers:
-      - name: subscriptions
+      - name: flipper
         image: registry.flou21.de/sky-flipper:77b9ad22-215e-4cbf-8afc-55e4d3a039fe
         ports:
         - containerPort: 80
