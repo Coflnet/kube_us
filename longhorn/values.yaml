@@ -118,7 +118,7 @@ longhornManager:
   #   value: "value"
   #   effect: "NoSchedule"
   nodeSelector: 
-    longhorn: true
+    longhorn: "true"
   ## If you want to set node selector for Longhorn Manager DaemonSet, delete the `{}` in the line above
   ## and uncomment this example block
   #  label-key1: "label-value1"
@@ -133,7 +133,8 @@ longhornDriver:
   #   operator: "Equal"
   #   value: "value"
   #   effect: "NoSchedule"
-  nodeSelector: {}
+  nodeSelector: 
+    longhorn: "true"
   ## If you want to set node selector for Longhorn Driver Deployer Deployment, delete the `{}` in the line above
   ## and uncomment this example block
   #  label-key1: "label-value1"
@@ -148,7 +149,8 @@ longhornUI:
   #   operator: "Equal"
   #   value: "value"
   #   effect: "NoSchedule"
-  nodeSelector: {}
+  nodeSelector:
+    longhorn: "true"
   ## If you want to set node selector for Longhorn UI Deployment, delete the `{}` in the line above
   ## and uncomment this example block
   #  label-key1: "label-value1"
@@ -169,7 +171,7 @@ resources: {}
 
 ingress:
   ## Set to true to enable ingress record generation
-  enabled: false
+  enabled: true
 
   ## Add ingressClassName to the Ingress
   ## Can replace the kubernetes.io/ingress.class annotation on v1.18+
