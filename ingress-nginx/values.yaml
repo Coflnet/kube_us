@@ -556,7 +556,7 @@ controller:
       priorityClassName: ""
       podAnnotations: {}
       nodeSelector:
-        kubernetes.io/os: linux
+        ingress: "true"
       tolerations: []
       runAsUser: 2000
 
@@ -734,7 +734,8 @@ defaultBackend:
   ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
   nodeSelector:
-    kubernetes.io/os: linux
+    ingress: "true"
+
 
   ## Annotations to be added to default backend pods
   ##
