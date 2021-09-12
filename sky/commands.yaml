@@ -3,6 +3,8 @@ kind: Rollout
 metadata:
   name: commands
   namespace: sky
+  annotations:
+    linkerd.io/inject: enabled
   labels:
     app: commands
 spec:
