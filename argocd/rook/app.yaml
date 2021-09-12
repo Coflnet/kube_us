@@ -13,7 +13,7 @@ spec:
       version: v3
   destination:
     server: https://kubernetes.default.svc
-    namespace: kafka
+    namespace: rook
   syncPolicy:
     automated:
       prune: true
