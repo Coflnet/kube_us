@@ -433,8 +433,8 @@ controller:
       https: 443
 
     targetPorts:
-      http: http
-      https: https
+      http: 80
+      https: 443
 
     type: NodePort
 
