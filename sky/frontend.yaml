@@ -3,8 +3,6 @@ kind: Rollout
 metadata:
   name: frontend
   namespace: sky
-  annotations:
-    linkerd.io/inject: enabled
   labels:
     app: frontend
 spec:
@@ -22,7 +20,7 @@ spec:
         - name: regcred
       containers:
       - name: frontend
-        image: registry.flou21.de/sky-frontend:2b03c77c-f5e5-488f-9a02-00924c0d4511
+        image: registry.flou21.de/sky-frontend:6e59d471-cf7f-4f20-a653-42a1c1b92d7a
         ports:
           - containerPort: 80
         resources:

@@ -1,14 +1,15 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: updater
   namespace: sky
-  annotations:
-    linkerd.io/inject: enabled
   labels:
     app: updater
 spec:
-  replicas: 1
+  replicas: 3
+  serviceName: updater
+  updateStrategy: 
+    type: RollingUpdate
   selector:
     matchLabels:
       app: updater
@@ -21,10 +22,8 @@ spec:
         - name: regcred
       containers:
       - name: updater
-        image: registry.flou21.de/sky-core:164cd32d-1a35-44e2-86fd-a05e275d8a61
+        image: registry.flou21.de/sky-updater:9b0fa8d0-6561-4aca-a977-5a106d1bde76
         env:
-        - name: MODES
-          value: updater
         - name: TOKEN_SECRET
           valueFrom:
             secretKeyRef:
@@ -94,3 +93,30 @@ spec:
           requests:
             memory: "400Mi"
             cpu: "750m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: updater
+spec:
+  selector:
+    app: updater
+  ports:
+  - port: 80
+    targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: updater-metrics-service
+  namespace: sky
+  labels:
+    app: updater-metrics-service
+spec:
+  selector:
+    app: updater
+  ports:
+  - port: 80
+    targetPort: 80
+    name: metrics
+    protocol: TCP

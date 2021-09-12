@@ -3,8 +3,6 @@ kind: Rollout
 metadata:
   name: commands
   namespace: sky
-  annotations:
-    linkerd.io/inject: enabled
   labels:
     app: commands
 spec:
@@ -22,11 +20,15 @@ spec:
         - name: regcred
       containers:
       - name: commands
-        image: registry.flou21.de/sky-commands:f9776b9e-790a-44e3-a275-22cc8bf344e3
+        image: registry.flou21.de/sky-commands:9015861d-b550-4936-870b-811d44150240
         ports:
           - containerPort: 8008
           - containerPort: 80
         env:
+          - name: FRONTEND_PROD
+            value: stage-frontend
+          - name: FRONTEND_STAGING
+            value: stage-frontend 
           - name: redisCon
             valueFrom: 
               configMapKeyRef:
@@ -64,7 +66,7 @@ spec:
               configMapKeyRef:
                 name: config
                 key: topic_auction_ended
-          - name: TOPICS__FLIPS
+          - name: TOPICS__FLIP
             valueFrom: 
               configMapKeyRef:
                 name: config
@@ -74,6 +76,8 @@ spec:
               configMapKeyRef:
                 name: config
                 key: kafka_host
+          - name: SUBSCRIPTION_HOST
+            value: subscriptions
         resources:
           requests:
             memory: "500Mi"
@@ -81,14 +85,6 @@ spec:
           limits:
             memory: "700Mi"
             cpu: "500m"
-        livenessProbe:
-          httpGet:
-            path: /status
-            port: 8008
-          initialDelaySeconds: 30
-          periodSeconds: 10
-          timeoutSeconds: 10
-          failureThreshold: 5
   strategy:
     canary: 
       maxUnavailable: 1
@@ -109,8 +105,12 @@ spec:
   selector:
     app: commands
   ports:
+  - port: 80
+    targetPort: 80
+    name: api
   - port: 8008
     targetPort: 8008
+    name: websocket
 ---
 apiVersion: v1
 kind: Service
@@ -120,5 +120,25 @@ spec:
   selector:
     app: commands
   ports:
+  - port: 80
+    targetPort: 80
+    name: api
   - port: 8008
     targetPort: 8008
+    name: websocket
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: commands-metrics-service
+  namespace: sky
+  labels:
+    app: commands-metrics-service
+spec:
+  selector:
+    app: commands
+  ports:
+  - port: 80
+    targetPort: 80
+    name: metrics
+    protocol: TCP

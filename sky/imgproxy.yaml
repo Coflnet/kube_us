@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   name: imgproxy
   namespace: sky
-  annotations:
-    linkerd.io/inject: enabled
   labels:
     app: imgproxy
 spec:

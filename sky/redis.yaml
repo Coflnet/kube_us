@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   name: redis
   namespace: sky
-  annotations:
-    linkerd.io/inject: enabled
   labels:
     app: redis
 spec:
