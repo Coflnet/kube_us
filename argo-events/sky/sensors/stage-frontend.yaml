@@ -1,15 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Sensor
 metadata:
-  name: sky-commands-webhook
+  name: stage-frontend-webhook
   namespace: argo-events
 spec:
   template:
     serviceAccountName: argo-events-sa
   dependencies:
-  - name: sky-commands
+  - name: sky-stage-frontend
     eventSourceName: sky-eventsource
-    eventName: sky-commands
+    eventName: sky-stage-frontend
+    filters: 
+      data:
+      - path: body.ref
+        type: string
+        value:
+          - refs/heads/develop
   triggers:
   - template:
       name: trigger
@@ -24,7 +30,9 @@ spec:
             kind: Workflow
             metadata:
               namespace: argo
-              generateName: build-sky-commands-
+              generateName: build-stage-frontend-sky-
+              labels:
+                workflows.argoproj.io/archive-strategy: "true"
             spec:
               entrypoint: build
               serviceAccountName: argo
@@ -61,11 +69,11 @@ spec:
                     arguments:
                       parameters:
                       - name: app_repo
-                        value: git://github.com/Coflnet/SkyCommands
+                        value: git://github.com/Coflnet/hypixel-react.git
                       - name: branch
-                        value: main
+                        value: develop
                       - name: container_image
-                        value: registry.flou.dev/sky-commands
+                        value: registry.flou.dev/sky-stage-frontend
                       - name: container_tag
                         value: "{{workflow.uid}}"
                       - name: sub_path 
@@ -77,7 +85,7 @@ spec:
                       - name: git_secret_key
                         value: password
 
-                  - name: promote
+                  - name: promote-frontend
                     templateRef:
                       name: promote
                       template: promote
@@ -94,11 +102,11 @@ spec:
                       - name: repo_url
                         value: "github.com/Coflnet/kube.git"
                       - name: image_name
-                        value: registry.flou.dev\/sky-commands
+                        value: registry.flou.dev\/sky-stage-frontend
                       - name: k8s_file
-                        value: ./sky/commands.yaml
+                        value: ./sky/stage-frontend.yaml
                       - name: message
-                        value: "sky commands - version bump {{workflow.uid}}"
+                        value: "[CI] sky stage frontend - version bump {{workflow.uid}}"
                     dependencies: [build]
 
                   - name: argo-sync
@@ -117,4 +125,4 @@ spec:
                           value: sky-argo-secret
                         - name: argo_auth_token_secret_key
                           value: argo_auth_token
-                    dependencies: [promote]
+                    dependencies: [promote-frontend]

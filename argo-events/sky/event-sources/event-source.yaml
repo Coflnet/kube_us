@@ -29,3 +29,25 @@ spec:
       port: "12000"
       endpoint: /sky-commands
       method: POST
+    sky-subscriptions: 
+      port: "12000"
+      endpoint: /sky-subscriptions
+      method: POST
+    sky-flipper: 
+      port: "12000"
+      endpoint: /sky-flipper
+      method: POST
+    sky-mc-connect: 
+      port: "12000"
+      endpoint: /sky-mc-connect
+      method: POST
+    sky-filter: 
+      port: "12000"
+      endpoint: /sky-filter
+      method: POST
+    sky-stage-frontend: 
+      port: "12000"
+      endpoint: /sky-stage-frontend
+    sky-updater: 
+      port: "12000"
+      endpoint: /sky-updater

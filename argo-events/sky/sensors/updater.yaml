@@ -1,15 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Sensor
 metadata:
-  name: sky-commands-webhook
+  name: sky-updater-webhook
   namespace: argo-events
 spec:
   template:
     serviceAccountName: argo-events-sa
   dependencies:
-  - name: sky-commands
+  - name: sky-updater
     eventSourceName: sky-eventsource
-    eventName: sky-commands
+    eventName: sky-updater
+    filters: 
+      data:
+      - path: body.ref
+        type: string
+        value:
+          - refs/heads/master
   triggers:
   - template:
       name: trigger
@@ -24,7 +30,7 @@ spec:
             kind: Workflow
             metadata:
               namespace: argo
-              generateName: build-sky-commands-
+              generateName: build-sky-updater-
             spec:
               entrypoint: build
               serviceAccountName: argo
@@ -61,11 +67,11 @@ spec:
                     arguments:
                       parameters:
                       - name: app_repo
-                        value: git://github.com/Coflnet/SkyCommands
+                        value: git://github.com/Coflnet/SkyUpdater
                       - name: branch
-                        value: main
+                        value: master
                       - name: container_image
-                        value: registry.flou.dev/sky-commands
+                        value: registry.flou.dev/sky-updater
                       - name: container_tag
                         value: "{{workflow.uid}}"
                       - name: sub_path 
@@ -94,11 +100,11 @@ spec:
                       - name: repo_url
                         value: "github.com/Coflnet/kube.git"
                       - name: image_name
-                        value: registry.flou.dev\/sky-commands
+                        value: registry.flou.dev\/sky-updater
                       - name: k8s_file
-                        value: ./sky/commands.yaml
+                        value: ./sky/updater.yaml
                       - name: message
-                        value: "sky commands - version bump {{workflow.uid}}"
+                        value: "[CI] sky updater - version bump {{workflow.uid}}"
                     dependencies: [build]
 
                   - name: argo-sync

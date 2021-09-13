@@ -93,7 +93,7 @@ spec:
                         - name: pull_request_number
                           value: ""
                         - name: git_repository
-                          value: "github.com/Coflnet/k8s"
+                          value: "github.com/Coflnet/kube"
                         - name: git_username
                           value: "Flou21"
                         - name: git_password_secret_name
@@ -123,7 +123,7 @@ spec:
                       - name: app_repo
                         value: git://github.com/Coflnet/hypixel-react.git
                       - name: container_image
-                        value: registry.flou21.de/sky
+                        value: registry.flou.dev/sky
                       - name: container_tag
                         value: ""
                       - name: sub_path 

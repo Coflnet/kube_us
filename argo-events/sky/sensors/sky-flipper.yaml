@@ -1,15 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Sensor
 metadata:
-  name: sky-commands-webhook
+  name: sky-flipper-webhook
   namespace: argo-events
 spec:
   template:
     serviceAccountName: argo-events-sa
   dependencies:
-  - name: sky-commands
+  - name: sky-flipper
     eventSourceName: sky-eventsource
-    eventName: sky-commands
+    eventName: sky-flipper
+    filters: 
+      data:
+      - path: body.ref
+        type: string
+        value:
+          - refs/heads/main
   triggers:
   - template:
       name: trigger
@@ -24,7 +30,7 @@ spec:
             kind: Workflow
             metadata:
               namespace: argo
-              generateName: build-sky-commands-
+              generateName: build-sky-flipper-
             spec:
               entrypoint: build
               serviceAccountName: argo
@@ -61,11 +67,11 @@ spec:
                     arguments:
                       parameters:
                       - name: app_repo
-                        value: git://github.com/Coflnet/SkyCommands
+                        value: git://github.com/Coflnet/SkyFlipper
                       - name: branch
                         value: main
                       - name: container_image
-                        value: registry.flou.dev/sky-commands
+                        value: registry.flou.dev/sky-flipper
                       - name: container_tag
                         value: "{{workflow.uid}}"
                       - name: sub_path 
@@ -94,11 +100,11 @@ spec:
                       - name: repo_url
                         value: "github.com/Coflnet/kube.git"
                       - name: image_name
-                        value: registry.flou.dev\/sky-commands
+                        value: registry.flou.dev\/sky-flipper
                       - name: k8s_file
-                        value: ./sky/commands.yaml
+                        value: ./sky/flipper.yaml
                       - name: message
-                        value: "sky commands - version bump {{workflow.uid}}"
+                        value: "[CI] sky flipper - version bump {{workflow.uid}}"
                     dependencies: [build]
 
                   - name: argo-sync
