@@ -30,7 +30,7 @@ spec:
             kind: Workflow
             metadata:
               namespace: argo
-              generateName: build-sky-flipper-
+              generateName: build-sky-filter-
             spec:
               entrypoint: build
               serviceAccountName: argo
