@@ -3,14 +3,14 @@ kind: Deployment
 metadata:
   name: registry
   namespace: registry
-  annotations:
-    config.linkerd.io/opaque-ports: "5000"
 spec:
   selector:
     matchLabels:
       app: registry
   template:
     metadata:
+      annotations:
+        config.linkerd.io/opaque-ports: "5000"
       labels:
         app: registry
     spec:
