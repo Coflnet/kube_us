@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: registry
   namespace: registry
+  annotations:
+    config.linkerd.io/opaque-ports: "5000"
 spec:
   selector:
     matchLabels:
