@@ -14,16 +14,6 @@ metadata:
 
 spec:
   rules:
-  - host: argo.flou21.de
-    http:
-      paths:
-      - path: /
-        pathType: ImplementationSpecific
-        backend:
-          service: 
-            name: argo-server
-            port:
-              number: 2746
   - host: argo.flou.dev
     http:
       paths:
@@ -34,4 +24,3 @@ spec:
             name: argo-server
             port:
               number: 2746
-
