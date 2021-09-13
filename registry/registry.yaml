@@ -9,8 +9,6 @@ spec:
       app: registry
   template:
     metadata:
-      annotations:
-        config.linkerd.io/opaque-ports: "5000"
       labels:
         app: registry
     spec:
