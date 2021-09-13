@@ -54,9 +54,9 @@ spec:
                     arguments:
                       parameters:
                       - name: app_repo
-                        value: git://github.com/Coflnet/k8s
+                        value: git://github.com/Coflnet/kube
                       - name: container_image
-                        value: registry.flou21.de/alpine-git
+                        value: registry.flou.dev/alpine-git
                       - name: container_tag
                         value: latest
                       - name: sub_path 
@@ -77,9 +77,9 @@ spec:
                     arguments:
                       parameters:
                       - name: app_repo
-                        value: git://github.com/Coflnet/k8s
+                        value: git://github.com/Coflnet/kube
                       - name: container_image
-                        value: registry.flou21.de/golang-node-cypress
+                        value: registry.flou.dev/golang-node-cypress
                       - name: container_tag
                         value: "1.16"
                       - name: sub_path 

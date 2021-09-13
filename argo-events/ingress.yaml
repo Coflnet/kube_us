@@ -7,148 +7,6 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: argo-events.flou21.de
-    http:
-      paths:
-      - path: /sportdings
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: sportdings-eventsource-eventsource-svc
-            port:
-              number: 12000
-
-  - host: argo-events.flou21.de
-    http:
-      paths:
-      - path: /sportdings-frontend
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: sportdings-frontend-eventsource-eventsource-svc
-            port:
-              number: 12000
-  - host: argo-events.flou21.de
-    http:
-      paths:
-      - path: /sky
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: sky-eventsource-eventsource-svc
-            port:
-              number: 12000
-  - host: argo-events.flou21.de
-    http:
-      paths:
-      - path: /blog
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: blog-eventsource-eventsource-svc
-            port:
-              number: 12000
-  - host: argo-events.flou21.de
-    http:
-      paths:
-      - path: /damlo
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: damlo-eventsource-eventsource-svc
-            port:
-              number: 12000
-  - host: argo-events.flou21.de
-    http:
-      paths:
-      - path: /sky-pull-request
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: sky-eventsource-eventsource-svc
-            port:
-              number: 12000
-  - host: argo-events.flou21.de
-    http:
-      paths:
-      - path: /sky-frontend
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: sky-eventsource-eventsource-svc
-            port:
-              number: 12000
-  - host: argo-events.flou21.de
-    http:
-      paths:
-      - path: /static-server
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: static-server-eventsource-eventsource-svc
-            port:
-              number: 12000
-  - host: argo-events.flou21.de
-    http:
-      paths:
-      - path: /cypress-executor
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: cypress-executor-eventsource-eventsource-svc
-            port:
-              number: 12000
-  - host: argo-events.flou21.de
-    http:
-      paths:
-      - path: /base-images
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: base-images-eventsource-eventsource-svc
-            port:
-              number: 12000
-  - host: argo-events.flou21.de
-    http:
-      paths:
-      - path: /mail-notification
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: mail-notification-eventsource-eventsource-svc
-            port:
-              number: 12000
-  - host: argo-events.flou21.de
-    http:
-      paths:
-      - path: /songvoter
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: songvoter-eventsource-eventsource-svc
-            port:
-              number: 12000
-  - host: argo-events.flou21.de
-    http:
-      paths:
-      - path: /kafka-dedup-dotnet
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: kafka-dedup-dotnet-eventsource-eventsource-svc
-            port:
-              number: 12000
-  - host: argo-events.flou21.de
-    http:
-      paths:
-      - path: /sky-core
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: sky-eventsource-eventsource-svc
-            port:
-              number: 12000
-
   - host: argo-events.flou.dev
     http:
       paths:
@@ -166,13 +24,9 @@ spec:
             name: sportdings-frontend-eventsource-eventsource-svc
             port:
               number: 12000
-      - path: /sky
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: sky-eventsource-eventsource-svc
-            port:
-              number: 12000
+  - host: argo-events.flou.dev
+    http:
+      paths:
       - path: /blog
         pathType: ImplementationSpecific
         backend:
@@ -180,11 +34,98 @@ spec:
             name: blog-eventsource-eventsource-svc
             port:
               number: 12000
+  - host: argo-events.flou.dev
+    http:
+      paths:
       - path: /damlo
         pathType: ImplementationSpecific
         backend:
           service:
             name: damlo-eventsource-eventsource-svc
+            port:
+              number: 12000
+  - host: argo-events.flou.dev
+    http:
+      paths:
+      - path: /static-server
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: static-server-eventsource-eventsource-svc
+            port:
+              number: 12000
+  - host: argo-events.flou.dev
+    http:
+      paths:
+      - path: /cypress-executor
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: cypress-executor-eventsource-eventsource-svc
+            port:
+              number: 12000
+  - host: argo-events.flou.dev
+    http:
+      paths:
+      - path: /base-images
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: base-images-eventsource-eventsource-svc
+            port:
+              number: 12000
+  - host: argo-events.flou.dev
+    http:
+      paths:
+      - path: /mail-notification
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: mail-notification-eventsource-eventsource-svc
+            port:
+              number: 12000
+  - host: argo-events.flou.dev
+    http:
+      paths:
+      - path: /songvoter
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: songvoter-eventsource-eventsource-svc
+            port:
+              number: 12000
+  - host: argo-events.flou.dev
+    http:
+      paths:
+      - path: /kafka-dedup-dotnet
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: kafka-dedup-dotnet-eventsource-eventsource-svc
+            port:
+              number: 12000
+  - host: argo-events.flou.dev
+    http:
+      paths:
+      - path: /sky-core
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: sky-eventsource-eventsource-svc
+            port:
+              number: 12000
+      - path: /sky-commands
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: sky-eventsource-eventsource-svc
+            port:
+              number: 12000
+      - path: /sky
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: sky-eventsource-eventsource-svc
             port:
               number: 12000
       - path: /sky-pull-request
@@ -201,59 +142,67 @@ spec:
             name: sky-eventsource-eventsource-svc
             port:
               number: 12000
-      - path: /static-server
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: static-server-eventsource-eventsource-svc
-            port:
-              number: 12000
-      - path: /cypress-executor
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: cypress-executor-eventsource-eventsource-svc
-            port:
-              number: 12000
-      - path: /base-images
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: base-images-eventsource-eventsource-svc
-            port:
-              number: 12000
-      - path: /mail-notification
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: mail-notification-eventsource-eventsource-svc
-            port:
-              number: 12000
-      - path: /songvoter
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: songvoter-eventsource-eventsource-svc
-            port:
-              number: 12000
-      - path: /kafka-dedup-dotnet
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: kafka-dedup-dotnet-eventsource-eventsource-svc
-            port:
-              number: 12000
-      - path: /sky-core
+      - path: /sky-subscriptions
         pathType: ImplementationSpecific
         backend:
           service:
             name: sky-eventsource-eventsource-svc
             port:
               number: 12000
-      - path: /sky-commands
+      - path: /sky-flipper
         pathType: ImplementationSpecific
         backend:
           service:
             name: sky-eventsource-eventsource-svc
+            port:
+              number: 12000
+      - path: /sky-mc-connect
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: sky-eventsource-eventsource-svc
+            port:
+              number: 12000
+      - path: /sky-filter
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: sky-eventsource-eventsource-svc
+            port:
+              number: 12000
+      - path: /sky-stage-frontend
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: sky-eventsource-eventsource-svc
+            port:
+              number: 12000
+      - path: /sky-updater
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: sky-eventsource-eventsource-svc
+            port:
+              number: 12000
+
+  - host: argo-events.flou.dev
+    http:
+      paths:
+      - path: /feedback-backend
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: feedback-eventsource-eventsource-svc
+            port:
+              number: 12000
+
+  - host: argo-events.flou.dev
+    http:
+      paths:
+      - path: /payment
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: payment-eventsource-eventsource-svc
             port:
               number: 12000

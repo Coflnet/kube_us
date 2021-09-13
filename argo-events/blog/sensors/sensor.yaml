@@ -10,6 +10,12 @@ spec:
   - name: blog
     eventSourceName: blog-eventsource
     eventName: blog
+    filters: 
+      data:
+      - path: body.ref
+        type: string
+        value:
+          - refs/heads/main
   triggers:
   - template:
       name: trigger
@@ -55,7 +61,7 @@ spec:
                       - name: app_repo
                         value: git://github.com/Coflnet/Blog.git
                       - name: container_image
-                        value: registry.flou21.de/coflnet-blog
+                        value: registry.flou.dev/coflnet-blog
                       - name: container_tag
                         value: "{{workflow.uid}}"
                       - name: sub_path 
@@ -83,9 +89,9 @@ spec:
                       - name: git_secret_key
                         value: password
                       - name: repo_url
-                        value: "github.com/Coflnet/k8s.git"
+                        value: "github.com/Coflnet/kube.git"
                       - name: image_name
-                        value: registry.flou21.de\/coflnet-blog
+                        value: registry.flou.dev\/coflnet-blog
                       - name: k8s_file
                         value: ./blog/blog.yaml
                       - name: message
