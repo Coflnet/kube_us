@@ -34,6 +34,8 @@ spec:
           enabled: true
           storageClass: longhorn
           size: 20Gi
+        volumePermissions
+          enabled: true
   project: default
   syncPolicy:
     automated:
@@ -48,7 +50,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Coflnet/k8s.git
+    repoURL: https://github.com/Coflnet/kube.git
     targetRevision: HEAD
     path: minio
     directory:
