@@ -165,7 +165,7 @@ controller:
 
   ## DaemonSet or Deployment
   ##
-  kind: Deployment
+  kind: DaemonSet
 
   ## Annotations to be added to the controller Deployment or DaemonSet
   ##
