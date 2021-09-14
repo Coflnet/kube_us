@@ -55,7 +55,7 @@ spec:
                       - name: app_repo
                         value: git://github.com/FranzDerPalme/SportDingsFrontend.git
                       - name: container_image
-                        value: registry.flou21.de/sport-dings-frontend
+                        value: registry.flou.dev/sport-dings-frontend
                       - name: container_tag
                         value: "{{workflow.uid}}"
                       - name: sub_path 
