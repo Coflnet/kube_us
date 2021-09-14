@@ -35,11 +35,6 @@ spec:
             configMapKeyRef:
               name: config
               key: mariadb_version
-        - name: JAEGER_AGENT_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: config
-              key: jaeger_agent_host
         - name: KAFKA_HOST
           valueFrom:
             configMapKeyRef:

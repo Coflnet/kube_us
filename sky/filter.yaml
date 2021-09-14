@@ -24,11 +24,6 @@ spec:
         - containerPort: 80
           name: web
         env: 
-          - name: JAEGER_SERVICE_NAME
-            valueFrom: 
-              configMapKeyRef:
-                name: config
-                key: jaeger_service_name
           - name: JAEGER_AGENT_HOST
             valueFrom: 
               configMapKeyRef:
