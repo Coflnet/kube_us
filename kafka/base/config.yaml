@@ -9,7 +9,7 @@ data:
   source_topic: sky-raw-flips
   target_topic: sky-flips
   batch_size: "50"
-  batch_wait_time: "10"
+  batch_wait_time: "1"
 
 
 
