@@ -85,6 +85,11 @@ spec:
               configMapKeyRef:
                 name: config
                 key: jaeger_agent_host
+          - name: JAEGER_SERVICE_NAME
+            valueFrom: 
+              configMapKeyRef:
+                name: config
+                key: jaeger_service_name
           - name: DOTNET_HOSTBUILDER__RELOADCONFIGONCHANGE
             valueFrom:
               configMapKeyRef:
