@@ -84,9 +84,9 @@ spec:
                       - name: git_secret_key
                         value: password
                       - name: repo_url
-                        value: "github.com/Coflnet/k8s.git"
+                        value: "github.com/Coflnet/kube.git"
                       - name: image_name
-                        value: registry.flou21.de\/sport-dings-frontend
+                        value: registry.flou.dev\/sport-dings-frontend
                       - name: k8s_file
                         value: ./sportdings/frontend.yaml
                       - name: message
