@@ -22,7 +22,7 @@ spec:
         - name: regcred
       containers:
       - name: updater
-        image: registry.flou.dev/sky-updater:8187ef74-fe3e-49e6-9f40-a8d571221905
+        image: registry.flou.dev/sky-updater:c3bf6d5a-3626-49aa-89b5-189789df0818
         env:
         - name: TOKEN_SECRET
           valueFrom:
