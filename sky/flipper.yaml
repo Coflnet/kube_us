@@ -19,7 +19,7 @@ spec:
         - name: regcred
       containers:
       - name: flipper
-        image: registry.flou.dev/sky-flipper:fd3d962a-b16f-47e1-ba1b-d9f9e00105f3
+        image: registry.flou.dev/sky-flipper:c09cc975-b95b-4829-8ecb-0d0241b4f5ee
         ports:
         - containerPort: 80
           name: web
