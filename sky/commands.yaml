@@ -29,7 +29,9 @@ spec:
             value: stage-frontend
           - name: FRONTEND_STAGING
             value: stage-frontend 
-          - name: redisCon
+          - name: UPDATER_HOST
+            value: updater
+          - name: REDIS_HOST
             valueFrom: 
               configMapKeyRef:
                 key: redis_host
