@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+  namespace: feedback
+data:
+  db_user: feedback
+  db_name: feedback
+  db_port: "3310"
+  db_host: "194.163.151.190"
+  jaeger_service_name: feedback-backend
+  jaeger_agent_host: jaeger-agent.observability.svc.cluster.local
