@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: flipper
-  replicas: 12
+  replicas: 6
   template:
     metadata:
       labels:
