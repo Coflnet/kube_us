@@ -1171,7 +1171,7 @@ metrics:
     ##   prometheus: my-prometheus
     ##
     selector: 
-      release: kube-prometheus-stack-1627574156 
+      release: prometheus 
     ## @param metrics.serviceMonitor.relabelings Relabel configuration for the metrics
     ##
     relabelings: []
