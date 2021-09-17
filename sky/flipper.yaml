@@ -56,6 +56,14 @@ spec:
             configMapKeyRef:
               name: config
               key: topic_new_auction
+        livenessProbe:
+          httpGet:
+            path: /status
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 15
+          failureThreshold: 3
+          timeoutSeconds: 5
         resources:
           requests:
             cpu: 200m
