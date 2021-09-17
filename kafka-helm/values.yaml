@@ -137,7 +137,7 @@ heapOpts: -Xmx4096m -Xms4096m
 deleteTopicEnable: true
 ## @param autoCreateTopicsEnable Switch to enable auto creation of topics. Enabling auto creation of topics not recommended for production or similar environments
 ##
-autoCreateTopicsEnable: true
+autoCreateTopicsEnable: false
 ## @param logFlushIntervalMessages The number of messages to accept before forcing a flush of data to disk
 ##
 logFlushIntervalMessages: _10000
@@ -1152,7 +1152,7 @@ metrics:
   serviceMonitor:
     ## @param metrics.serviceMonitor.enabled if `true`, creates a Prometheus Operator ServiceMonitor (requires `metrics.kafka.enabled` or `metrics.jmx.enabled` to be `true`)
     ##
-    enabled: false
+    enabled: true
     ## @param metrics.serviceMonitor.namespace Namespace in which Prometheus is running
     ##
     namespace: "kafka"
@@ -1171,7 +1171,7 @@ metrics:
     ##   prometheus: my-prometheus
     ##
     selector: 
-      release: kube-prometheus-stack-1627574156
+      release: promtheus
     ## @param metrics.serviceMonitor.relabelings Relabel configuration for the metrics
     ##
     relabelings: []
@@ -1305,6 +1305,12 @@ provisioning:
       flush.messages: 1
       compression.type: "gzip"
   - name: sky-topic-flip
+    partitions: 12
+    replicationFactor: 1
+    config:
+      flush.messages: 1
+      compression.type: "gzip"
+  - name: sky-settings
     partitions: 12
     replicationFactor: 1
     config:
