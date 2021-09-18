@@ -44,6 +44,13 @@ spec:
             configMapKeyRef:
               name: config
               key: topic_new_bid
+        - name: JAEGER_SERVICE_NAME
+          value: sky-mc-connect
+        - name: JAEGER_AGENT_HOST
+          valueFrom: 
+            configMapKeyRef:
+              name: config
+              key: jaeger_agent_host
 ---
 apiVersion: v1
 kind: Service
