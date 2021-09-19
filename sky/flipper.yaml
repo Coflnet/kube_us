@@ -19,7 +19,7 @@ spec:
         - name: regcred
       containers:
       - name: flipper
-        image: registry.flou.dev/sky-flipper:15a19a27-cff9-48e5-bc1f-7acd43ae887e
+        image: registry.flou.dev/sky-flipper:e0d43a5d-d580-4696-a8f6-9471aed29659
         ports:
         - containerPort: 80
           name: web
@@ -41,7 +41,7 @@ spec:
             configMapKeyRef:
               name: config
               key: kafka_host
-        - name: redisCon
+        - name: REDIS_HOST
           valueFrom: 
             configMapKeyRef:
               name: config

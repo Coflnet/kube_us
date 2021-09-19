@@ -19,16 +19,16 @@ spec:
         - name: regcred
       containers:
       - name: indexer
-        image: registry.flou.dev/sky:6a443759-af9c-444d-859a-f58a6f4cb4f1
+        image: registry.flou.dev/sky:4f547064-1f32-42c0-bbac-8b333cbc93e4
         ports:
           - containerPort: 8008
         livenessProbe:
           httpGet:
             path: /status
             port: 8008
-          initialDelaySeconds: 300
+          initialDelaySeconds: 900
           periodSeconds: 10
-          failureThreshold: 3
+          failureThreshold: 6
           timeoutSeconds: 10
         env:
           - name: TOKEN_SECRET
