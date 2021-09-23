@@ -132,3 +132,20 @@ spec:
             name: sky-commands-main-service
             port:
               number: 80
+  - host: sky-mod.coflnet.com
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: sky-commands-main-service
+            port:
+              number: 8008
+      - path: /api
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: sky-commands-main-service
+            port:
+              number: 80
