@@ -14,7 +14,7 @@ global:
   ##   - myRegistryKeySecretName
   ##
   imagePullSecrets: []
-  storageClass: ""
+  storageClass: "longhorn"
 
 ## @section Common parameters
 
@@ -477,7 +477,7 @@ persistence:
     - ReadWriteOnce
   ## @param persistence.size PVC Storage Request for Cassandra data volume
   ##
-  size: 20Gi
+  size: 40Gi
   ## @skip persistence.commitLogsize PVC Storage Request for Cassandra commit log volume
   ##
   # commitLogsize: 2Gi
@@ -557,7 +557,7 @@ volumePermissions:
 metrics:
   ## @param metrics.enabled Start a side-car prometheus exporter
   ##
-  enabled: false
+  enabled: true
   ## Bitnami Cassandra Exporter image
   ## ref: https://hub.docker.com/r/bitnami/cassandra-exporter/tags/
   ## @param metrics.image.registry Cassandra exporter image registry
@@ -610,10 +610,10 @@ metrics:
   serviceMonitor:
     ## @param metrics.serviceMonitor.enabled If `true`, creates a Prometheus Operator ServiceMonitor (also requires `metrics.enabled` to be `true`)
     ##
-    enabled: false
+    enabled: true
     ## @param metrics.serviceMonitor.namespace Namespace in which Prometheus is running
     ##
-    namespace: monitoring
+    namespace: "prometheus"
     ## @param metrics.serviceMonitor.interval Interval at which metrics should be scraped.
     ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#endpoint
     ## e.g:
@@ -629,8 +629,8 @@ metrics:
     ## @param metrics.serviceMonitor.selector Prometheus instance selector labels
     ## ref: https://github.com/bitnami/charts/tree/master/bitnami/prometheus-operator#prometheus-configuration
     ## e.g:
-    ## selector:
-    ##   prometheus: my-prometheus
+    selector:
+      release: prometheus
     ##
     selector: {}
   ## Metrics container ports to open
