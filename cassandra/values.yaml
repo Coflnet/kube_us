@@ -557,7 +557,7 @@ volumePermissions:
 metrics:
   ## @param metrics.enabled Start a side-car prometheus exporter
   ##
-  enabled: true
+  enabled: false
   ## Bitnami Cassandra Exporter image
   ## ref: https://hub.docker.com/r/bitnami/cassandra-exporter/tags/
   ## @param metrics.image.registry Cassandra exporter image registry
