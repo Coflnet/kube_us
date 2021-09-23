@@ -20,7 +20,7 @@ spec:
         - name: regcred
       containers:
       - name: commands
-        image: registry.flou.dev/sky-commands:0a72ae98-7fcf-4139-a59e-e23c2938ecfe
+        image: registry.flou.dev/sky-commands:94304150-cfa5-4064-9497-3adfaeb5ed12
         ports:
           - containerPort: 8008
           - containerPort: 80
@@ -39,7 +39,7 @@ spec:
           - name: DBConnection
             valueFrom:
               secretKeyRef:
-                key: connection_read
+                key: connection_read_secondary
                 name: secret
           - name: MODES
             value: commands
