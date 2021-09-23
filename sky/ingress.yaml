@@ -115,3 +115,20 @@ spec:
             port:
               number: 8008
 
+  - host: sky-mod.flou.dev
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: sky-commands-main-service
+            port:
+              number: 8008
+      - path: /api
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: sky-commands-main-service
+            port:
+              number: 80
