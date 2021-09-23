@@ -1,6 +1,7 @@
 secret.yaml
 regcred.yaml
 unsealed.yaml
+auth-secret.yaml
 
 # temp
 sportdings/config
