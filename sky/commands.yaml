@@ -1,0 +1,157 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: commands
+  namespace: sky
+  labels:
+    app: commands
+spec:
+  replicas: 3
+  progressDeadlineSeconds: 2592000
+  selector:
+    matchLabels:
+      app: commands
+  template:
+    metadata:
+      labels:
+        app: commands
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+      - name: commands
+        image: registry.flou.dev/sky-commands:9c7dd4bf-7239-454b-b40d-ed26a67d76fd
+        ports:
+          - containerPort: 8008
+          - containerPort: 80
+        env:
+          - name: FRONTEND_PROD
+            value: stage-frontend
+          - name: FRONTEND_STAGING
+            value: stage-frontend 
+          - name: UPDATER_HOST
+            value: updater
+          - name: MCCONNECT_HOST
+            value: mc-connect
+          - name: REDIS_HOST
+            valueFrom: 
+              configMapKeyRef:
+                key: redis_host
+                name: config
+          - name: PAYMENTS_HOST
+            valueFrom: 
+              configMapKeyRef:
+                key: payment_host
+                name: config
+          - name: DBConnection
+            valueFrom:
+              secretKeyRef:
+                key: connection_read_secondary
+                name: secret
+          - name: MODES
+            value: commands
+          - name: JAEGER_AGENT_HOST
+            valueFrom: 
+              configMapKeyRef:
+                name: config
+                key: jaeger_agent_host
+          - name: TOPICS__MISSING_AUCTION
+            valueFrom: 
+              configMapKeyRef:
+                name: config
+                key: topic_missing_auction
+          - name: TOPICS__SOLD_AUCTION
+            valueFrom: 
+              configMapKeyRef:
+                name: config
+                key: topic_sold_auction
+          - name: TOPICS__AUCTION_ENDED
+            valueFrom: 
+              configMapKeyRef:
+                name: config
+                key: topic_auction_ended
+          - name: TOPICS__FLIP
+            valueFrom: 
+              configMapKeyRef:
+                name: config
+                key: topic_flip
+          - name: KAFKA_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: config
+                key: kafka_host
+          - name: SUBSCRIPTION_HOST
+            value: subscriptions
+          - name: INDEXER_HOST
+            value: sky-indexer-service
+        resources:
+          requests:
+            memory: "500Mi"
+            cpu: "50m"
+  strategy:
+    canary: 
+      maxUnavailable: 1
+      canaryService: sky-commands-canary-service
+      stableService: sky-commands-main-service
+      steps:
+      - setWeight: 5
+      - pause:
+          duration: 1h
+      - setWeight: 10
+      - pause:
+          duration: 2h
+      - setWeight: 20
+      - pause:
+          duration: 3h
+      - setWeight: 50
+      - pause:
+          duration: 6h
+      - setWeight: 100
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sky-commands-main-service
+  labels:
+    mirror.linkerd.io/exported: "true"
+spec:
+  selector:
+    app: commands
+  ports:
+  - port: 80
+    targetPort: 80
+    name: api
+  - port: 8008
+    targetPort: 8008
+    name: websocket
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sky-commands-canary-service
+spec:
+  selector:
+    app: commands
+  ports:
+  - port: 80
+    targetPort: 80
+    name: api
+  - port: 8008
+    targetPort: 8008
+    name: websocket
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: commands-metrics-service
+  namespace: sky
+  labels:
+    app: commands-metrics-service
+spec:
+  selector:
+    app: commands
+  ports:
+  - port: 80
+    targetPort: 80
+    name: metrics
+    protocol: TCP

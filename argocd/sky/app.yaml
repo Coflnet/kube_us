@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Coflnet/kube.git
+    repoURL: https://github.com/Coflnet/kube_us.git
     targetRevision: HEAD
     path: sky
     directory:
