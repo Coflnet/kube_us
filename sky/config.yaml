@@ -13,6 +13,7 @@ data:
   kafka_host: kafka-helm.kafka.svc.cluster.local
   redis_host: redis-service
   commands_host: sky-commands-main-service-default.sky.svc.cluster.local
+  payment_host: payment-default.payment.svc.cluster.local
 
   # kafka topics
   topic_missing_auction-raw: sky-canceledauction-raw
