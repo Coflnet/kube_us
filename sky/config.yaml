@@ -7,13 +7,13 @@ data:
   user: sky 
   database: sky
   jaeger_service_name: hypixel-skyblock-core
-  jaeger_agent_host: jaeger-agent-default.observability.svc.cluster.local
-  jaeger_sampling_host: http://jaeger-agent-default.observability.svc.cluster.local:5778/sampling
+  jaeger_agent_host: jaeger-agent-default.observability
+  jaeger_sampling_host: http://jaeger-agent-default.observability:5778/sampling
   reload_config_on_change: "false"
-  kafka_host: kafka-helm-headless-default.kafka.svc.cluster.local
+  kafka_host: kafka-helm-headless-default.kafka
   redis_host: redis-service
-  commands_host: sky-commands-main-service-default.sky.svc.cluster.local
-  payment_host: payment-default.payment.svc.cluster.local
+  commands_host: sky-commands-main-service-default.sky
+  payment_host: payment-default.payment
 
   # kafka topics
   topic_missing_auction-raw: sky-canceledauction-raw
