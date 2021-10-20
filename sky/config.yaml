@@ -10,7 +10,7 @@ data:
   jaeger_agent_host: jaeger-agent-default.observability
   jaeger_sampling_host: http://jaeger-agent-default.observability:5778/sampling
   reload_config_on_change: "false"
-  kafka_host: kafka-helm-headless-default.kafka
+  kafka_host: kafka-helm-default.kafka
   redis_host: redis-service
   commands_host: sky-commands-main-service-default.sky
   payment_host: payment-default.payment
